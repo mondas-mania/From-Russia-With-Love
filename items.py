@@ -1,5 +1,4 @@
 class item:
-
     def __init__(self, id, name, description, mass):
         self.id = id
         self.name = name
@@ -28,3 +27,13 @@ item_handbook = item("handbook", "a student handbook", handbook_desc, 0.150)
 
 weights_desc = "There's no way you can be bothered to try to lift this"
 item_weights = item("weights", "10kg weights", weights_desc, 10.000)
+
+items_dict = {
+    item_id.id: item_id,
+    item_laptop.id: item_laptop,
+    item_money.id: item_money,
+    item_biscuits.id: item_biscuits,
+    item_pen.id: item_pen,
+    item_handbook.id: item_handbook,
+    item_weights.id: item_weights
+}

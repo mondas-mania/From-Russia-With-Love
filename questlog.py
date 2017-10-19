@@ -1,4 +1,5 @@
 from termcolor import colored
+from time import *
 
 
 class log:
@@ -21,29 +22,8 @@ class tip:
         self.time = time
 
     def print_tip(self):
-        print(colored(self.time, "red", attrs=["bold"]) + " - from " + self.source + " - " + self.text)
+        print(colored(self.time.display_time, "red", attrs=["bold"]) + " - from " + self.source + " - " + self.text)
 
 
-class basic_time:
-    def __init__(self, hrs, mins):
-        self.hours = hrs
-        self.mins = mins
-
-    def display_time(self):
-        if len(str(self.mins)) == 1:
-            time = str(self.hours) + ":0" + str(self.mins)
-        else:
-            time = str(self.hours) + ":" + str(self.mins)
-        return time
-
-    def incr_time(self, hrs, mins):
-        self.mins += mins
-        if self.mins >= 60:
-            self.hours += self.mins // 60
-            self.mins = self.mins % 60
-
-        self.hours += hrs
-        if self.hours >= 24:
-            self.hours = self.hours % 24
-
-
+time = basic_time(13, 49)
+time.display_time()

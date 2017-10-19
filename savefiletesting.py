@@ -2,6 +2,7 @@ from items import *
 from player import *
 from map import rooms
 from time_system import *
+from questlog import *
 from termcolor import colored
 import os
 
@@ -36,6 +37,9 @@ def get_file_name(message):
 def save_file():
     global inventory
     global current_room
+    global current_time
+    global quest_log
+
     print_save_files()
     savename = get_file_name("What do you want to name the save? ")
 
@@ -47,7 +51,12 @@ def save_file():
     for items in inventory:
         save.write(items.id + "\n")
 
-    save.write(current_room["name"])
+    save.write(current_room["name"] + "\n")
+    save.write(current_time.display_time() + "\n")
+
+    save.write(str(len(quest_log.tip)) + "\n")
+    for tips in quest_log.tip:
+        save.write(tips.text + " - " + tips.source + " - " + tips.time.display_time() + "\n")
 
     save.close()
 
@@ -57,7 +66,7 @@ def load_file():
     global current_room
     savename = ""
     print_save_files()
-    while (savename + ".txt") not in os.listdir("Save Files/"):
+    while (savename + ".txt") not in os.listdir("Save-Files/"):
         savename = get_file_name("Which save do you want to load? ")
 
         if not savename:

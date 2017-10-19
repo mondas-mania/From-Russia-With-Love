@@ -56,7 +56,7 @@ def save_file():
 
     save.write(str(len(quest_log.tip)) + "\n")
     for tips in quest_log.tip:
-        save.write(tips.text + " - " + tips.source + " - " + tips.time.display_time() + "\n")
+        save.write(tips.text + " ~ " + tips.source + " ~ " + tips.time.display_time() + "\n")
 
     save.close()
 
@@ -64,6 +64,8 @@ def save_file():
 def load_file():
     global inventory
     global current_room
+    global current_time
+
     savename = ""
     print_save_files()
     while (savename + ".txt") not in os.listdir("Save-Files/"):
@@ -72,14 +74,16 @@ def load_file():
         if not savename:
             return
 
-        if (savename + ".txt") not in os.listdir("Save Files/"):
+        if (savename + ".txt") not in os.listdir("Save-Files/"):
             print(colored("Sorry that save doesn't exist", "red"))
 
     save = open("Save-Files/" + savename + ".txt", "r")
 
     savelines = save.readlines()
-    inv_count = int(savelines[0])
-    inv_list = savelines[1:inv_count + 1]
+    line_pos = 0
+    inv_count = int(savelines[line_pos])
+    line_pos = inv_count + 1
+    inv_list = savelines[1:line_pos]
 
     for i in range(0, inv_count):
         inv_list[i] = inv_list[i].rstrip()
@@ -90,16 +94,49 @@ def load_file():
 
     inventory = new_inventory
 
-    room_name = savelines[inv_count + 1]
+    room_name = savelines[line_pos]
+    print("Room = " + room_name)
     for room in rooms:
         if rooms[room]["name"] == room_name:
             current_room = room
 
+    line_pos += 1
+    print("Time = " + savelines[line_pos])
+    current_time = get_time_from_str(savelines[line_pos])
+
+    line_pos += 1
+    tip_count = int(savelines[line_pos])
+
+    line_pos += 1
+    tip_list = savelines[line_pos:line_pos + tip_count + 1]
+
+
+    quest_log.clear_all()
+    for full_tip in tip_list:
+        txt = ""
+        source = ""
+        time_str = ""
+        section = 1
+        for chars in full_tip:
+            if chars == "~":
+                section += 1
+            elif section == 1 and chars != "~":
+                txt += chars
+            elif section == 2 and chars != "~":
+                source += chars
+            elif section == 3 and chars != "~":
+                time_str += chars
+
+        new_tip = tip(txt.strip(), source.strip(), get_time_from_str(time_str))
+        quest_log.add_tip(new_tip)
+
+    quest_log.print_tips()
+
+
     save.close()
 
 
-basic_time(10, 39).display_time()
-save_file()
+#save_file()
 load_file()
 
 

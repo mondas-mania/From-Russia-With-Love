@@ -15,6 +15,12 @@ class log:
     def add_tip(self, tip):
         self.tip.append(tip)
 
+    def remove_tip(self, tip):
+        self.tip.remove(tip)
+
+    def clear_all(self):
+        self.tip = []
+
 
 class tip:
     def __init__(self, text, source, time):

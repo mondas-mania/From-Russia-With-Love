@@ -1,10 +1,11 @@
 from termcolor import colored
 
+
 class log:
     def __init__(self):
         self.tip = []
 
-    def print__tips(self):
+    def print_tips(self):
         print(colored("Your notebook:", "red", attrs=["bold", "underline"]))
         for tips in self.tip:
             tips.print_tip()
@@ -23,8 +24,26 @@ class tip:
         print(colored(self.time, "red", attrs=["bold"]) + " - from " + self.source + " - " + self.text)
 
 
-tip1 = tip("You should play the game", "David", "13:59")
-tip2 = tip("or just go home, idk", "David", "14:03")
-qlog = log()
-qlog.add_tip(tip1)
-qlog.add_tip(tip2)
+class basic_time:
+    def __init__(self, hrs, mins):
+        self.hours = hrs
+        self.mins = mins
+
+    def display_time(self):
+        if len(str(self.mins)) == 1:
+            time = str(self.hours) + ":0" + str(self.mins)
+        else:
+            time = str(self.hours) + ":" + str(self.mins)
+        return time
+
+    def incr_time(self, hrs, mins):
+        self.mins += mins
+        if self.mins >= 60:
+            self.hours += self.mins // 60
+            self.mins = self.mins % 60
+
+        self.hours += hrs
+        if self.hours >= 24:
+            self.hours = self.hours % 24
+
+

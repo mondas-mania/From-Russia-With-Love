@@ -1,7 +1,6 @@
 from items import *
 from player import *
 from map import rooms
-from time_system import *
 from questlog import *
 from termcolor import colored
 import os
@@ -110,7 +109,7 @@ def load_file():
     line_pos += 1
     tip_list = savelines[line_pos:line_pos + tip_count + 1]
 
-
+    quest_log.print_tips()
     quest_log.clear_all()
     for full_tip in tip_list:
         txt = ""
@@ -131,7 +130,6 @@ def load_file():
         quest_log.add_tip(new_tip)
 
     quest_log.print_tips()
-
 
     save.close()
 

@@ -31,6 +31,3 @@ class tip:
     def print_tip(self):
         print(colored(self.time.display_time(), "red", attrs=["bold"]) + " - from " + self.source + " - " + self.text)
 
-
-#time = basic_time(13, 49)
-#time.display_time()

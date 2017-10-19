@@ -1,6 +1,7 @@
 from items import *
 from player import *
 from map import rooms
+from time_system import *
 from termcolor import colored
 import os
 
@@ -88,6 +89,7 @@ def load_file():
     save.close()
 
 
+basic_time(10, 39).display_time()
 save_file()
 load_file()
 

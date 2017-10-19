@@ -1,5 +1,6 @@
+from time_system import *
 from termcolor import colored
-from time import *
+
 
 
 class log:
@@ -22,8 +23,8 @@ class tip:
         self.time = time
 
     def print_tip(self):
-        print(colored(self.time.display_time, "red", attrs=["bold"]) + " - from " + self.source + " - " + self.text)
+        print(colored(self.time.display_time(), "red", attrs=["bold"]) + " - from " + self.source + " - " + self.text)
 
 
-time = basic_time(13, 49)
-time.display_time()
+#time = basic_time(13, 49)
+#time.display_time()

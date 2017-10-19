@@ -1,5 +1,3 @@
-
-
 class basic_time:
     def __init__(self, hrs, mins):
         self.hours = hrs
@@ -78,7 +76,7 @@ def get_time_from_str(str):
     return basic_time(int(hrs), int(mins))
 
 
-time1 = get_time_from_str("  11:49  \n")
-time2 = basic_time(11, 46)
-diff = diff_times(time1, time2)
-print(diff.display_time())
+#time1 = get_time_from_str("  11:49  \n")
+#time2 = basic_time(11, 46)
+#diff = diff_times(time1, time2)
+#print(diff.display_time())

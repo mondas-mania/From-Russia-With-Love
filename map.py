@@ -13,7 +13,6 @@ south and east. The exit is to the west.""",
 
     "exits": {"south": "Admins", "east": "Tutor", "west": "Parking"},
 
-    #"items": [item_biscuits, item_handbook, item_weights]
     "items": [item_biscuits, item_handbook]
 }
 
@@ -71,8 +70,7 @@ Queen's Buildings.""",
     "items": [item_pen]
 }
 
-
-
+# Add any new rooms to the dictionary with whatever appropriate name you want
 rooms = {
     "Reception": room_reception,
     "Admins": room_admins,

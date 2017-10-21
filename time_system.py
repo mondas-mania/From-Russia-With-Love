@@ -48,7 +48,7 @@ def larger_time(time1, time2):
 def diff_times(time1, time2):
     larger = larger_time(time1, time2)
     if not larger:
-        return basic_time(0,0)
+        return basic_time(0, 0)
     elif larger == time1:
         smaller = time2
     else:

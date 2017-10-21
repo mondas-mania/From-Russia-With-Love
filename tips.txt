@@ -1,0 +1,2 @@
+#Insert a new tip on a new line below this comment, no need for speech marks. Anything after a ~ symbol will not be read by the program so you can write any notes about the tip after a ~
+You should go to your desk to pick up your assignment. ~ Tip to start off, this has a tip ID of 1 bc python lists start at index 0

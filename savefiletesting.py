@@ -1,4 +1,3 @@
-from items import *
 from player import *
 from map import rooms
 from questlog import *
@@ -79,6 +78,7 @@ def load_file():
     save = open("Save-Files/" + savename + ".txt", "r")
 
     savelines = save.readlines()
+    save.close()
     line_pos = 0
     inv_count = int(savelines[line_pos])
     line_pos = inv_count + 1
@@ -129,12 +129,11 @@ def load_file():
         new_tip = tip(txt.strip(), source.strip(), get_time_from_str(time_str))
         quest_log.add_tip(new_tip)
 
-    quest_log.print_tips()
 
-    save.close()
-
-
-#save_file()
-load_file()
+# The below lines can be uncommented to test the functionality of the game
+# save_file()
+# load_file()
+# print(str(inventory))
+# quest_log.print_tips()
 
 

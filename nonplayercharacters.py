@@ -1,5 +1,6 @@
 from items import *
 from map import rooms
+from termcolor import colored
 
 
 class npc:
@@ -35,6 +36,14 @@ class npc:
             inv.append(items.name)
         return inv
 
+    def print_dialogue(self, text):
+        print(colored(self.full_name() + ": ", attrs=["bold"]) + text)
+
 
 jing_desc = "The surprisingly enthusiastic receptionist here at the station."
 npc_jing = npc("Jing Wu", [item_pen, item_biscuits], rooms["Reception"], jing_desc)
+bill_desc = "The head honcho."
+npc_bill = npc("Bill Jugwin", [], rooms["Office"], bill_desc)
+
+npcs = [npc_jing, npc_bill]
+

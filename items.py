@@ -6,6 +6,7 @@ class item:
         self.mass = mass
 
 
+# Items can be added in the following format:
 id_desc = """You new shiny student ID card. Expires 1 June 2017.
 You wonder why they have printed a suicide hotline number on it?..."""
 item_id = item("id", "id card", id_desc, 0.010)
@@ -28,6 +29,8 @@ item_handbook = item("handbook", "a student handbook", handbook_desc, 0.150)
 weights_desc = "There's no way you can be bothered to try to lift this"
 item_weights = item("weights", "10kg weights", weights_desc, 10.000)
 
+# This dictionary just relates the 'simple name' to the item object
+# Add any new items to the dictionary like this
 items_dict = {
     item_id.id: item_id,
     item_laptop.id: item_laptop,

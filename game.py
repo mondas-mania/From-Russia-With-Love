@@ -2,6 +2,7 @@
 
 from map import rooms
 from dialogue import *
+from questlog import create_tip_from_file
 from player import *
 from items import *
 from gameparser import *
@@ -174,6 +175,21 @@ def move(exits, direction):
 
     # Next room to go to
     return rooms[exits[direction]]
+
+
+
+
+
+def story():
+    
+
+
+
+
+
+
+
+
 
 
 # This is the entry point of our program

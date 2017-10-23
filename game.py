@@ -181,7 +181,8 @@ def move(exits, direction):
 
 
 def story():
-    
+    pass
+
 
 
 

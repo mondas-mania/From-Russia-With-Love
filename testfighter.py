@@ -4,6 +4,7 @@ import math
 from random import randint
 from time import sleep
 ##CHANGE WEAPON DURING FIGHT##
+##BLOCKING FEATURE ADDITION##
 def hitpoints(a,b):
 	return randint(1,3)*(randint(a, b))
 

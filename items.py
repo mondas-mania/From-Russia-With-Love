@@ -7,36 +7,18 @@ class item:
 
 
 # Items can be added in the following format:
-id_desc = """You new shiny student ID card. Expires 1 June 2017.
-You wonder why they have printed a suicide hotline number on it?..."""
-item_id = item("id", "id card", id_desc, 0.010)
+badge_desc = """A slightly grubby badge showing that you are part of the [Insert initials here]PD"""
+item_badge = item("id", "id card", badge_desc, 0.010)
 
-laptop_desc = "It has seen better days. At least it has a WiFi card!"
-item_laptop = item("laptop", "laptop", laptop_desc, 2.400)
+coffee_desc = "You can already tell it's going to be a long day."
+item_coffee = item("coffee", "a cup of coffee", coffee_desc, 0.150)
 
-money_desc = "This wad of cash is barely enough to pay your tuition fees."
-item_money = item("money", "money", money_desc, 0.100)
-
-biscuits_desc = "A pack of biscuits."
-item_biscuits = item("biscuits", "a pack of biscuits", biscuits_desc, 0.100)
-
-pen_desc = "A basic ballpoint pen."
-item_pen = item("pen", "a pen", pen_desc, 0.010)
-
-handbook_desc = "This student handbook explains everything. Seriously."
-item_handbook = item("handbook", "a student handbook", handbook_desc, 0.150)
-
-weights_desc = "There's no way you can be bothered to try to lift this"
-item_weights = item("weights", "10kg weights", weights_desc, 10.000)
+gun_desc = "Might need this later."
+item_gun = item("gun", "a pistol", gun_desc, 0.800)
 
 # This dictionary just relates the 'simple name' to the item object
 # Add any new items to the dictionary like this
 items_dict = {
-    item_id.id: item_id,
-    item_laptop.id: item_laptop,
-    item_money.id: item_money,
-    item_biscuits.id: item_biscuits,
-    item_pen.id: item_pen,
-    item_handbook.id: item_handbook,
-    item_weights.id: item_weights
+    item_badge.id: item_badge,
+    item_coffee.id: item_coffee
 }

@@ -27,9 +27,9 @@ room_desks = {
 }
 
 room_den_main = {
-    "name": ,
+    "name": "",
 
-    "description": ,
+    "description": "",
 
     "exits": {},
 
@@ -37,9 +37,9 @@ room_den_main = {
 }
 
 room_den_basement = {
-    "name":,
+    "name": "",
 
-    "description":,
+    "description": "",
 
     "exits": {},
 
@@ -47,9 +47,9 @@ room_den_basement = {
 }
 
 room_streets = {
-    "name":,
+    "name": "",
 
-    "description":,
+    "description": "",
 
     "exits": {},
 
@@ -57,9 +57,9 @@ room_streets = {
 }
 
 room_dark_alley = {
-    "name":,
+    "name": "",
 
-    "description":,
+    "description": "",
 
     "exits": {},
 
@@ -67,9 +67,9 @@ room_dark_alley = {
 }
 
 room_warehouse_lower = {
-    "name":,
+    "name": "",
 
-    "description":,
+    "description": "",
 
     "exits": {},
 
@@ -77,9 +77,9 @@ room_warehouse_lower = {
 }
 
 room_warehouse_upper = {
-    "name":,
+    "name": "",
 
-    "description":,
+    "description": "",
 
     "exits": {},
 
@@ -87,9 +87,9 @@ room_warehouse_upper = {
 }
 
 room_bills_house = {
-    "name":,
+    "name": "",
 
-    "description":,
+    "description": "",
 
     "exits": {},
 
@@ -97,9 +97,9 @@ room_bills_house = {
 }
 
 room_bills_house_secret = {
-    "name":,
+    "name": "",
 
-    "description":,
+    "description": "",
 
     "exits": {},
 

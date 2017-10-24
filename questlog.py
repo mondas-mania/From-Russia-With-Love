@@ -2,6 +2,28 @@ from time_system import *
 from termcolor import colored
 
 
+def init_tips():
+    tips = open("tips.txt", "r")
+    tips_list = tips.readlines()
+    tips.close()
+    new_list = []
+    for tips in tips_list:
+        tip_text = ""
+        comment = False
+        for chars in tips:
+            if chars == "~":
+                comment = True
+            if not comment:
+                tip_text += chars
+        new_list.append(tip_text)
+
+    new_list[:] = [line.strip() for line in new_list]
+    return new_list
+
+
+tips_text_list = init_tips()
+
+
 class log:
     def __init__(self):
         self.tip = []
@@ -34,21 +56,9 @@ class tip:
 
 
 def create_tip_from_file(text_id, source, time):
-    tips = open("tips.txt", "r")
-    tips_text_list = tips.readlines()
-    tips.close()
-    for lines in tips_text_list:
-        lines.strip()
+    global tips_text_list
     if text_id == 0:
         return False
     else:
-        tip_text = ""
-        comment = False
-        for chars in tips_text_list[text_id]:
-            if chars == "~":
-                comment = True
-            if not comment:
-                tip_text += chars
-
-        return tip(tip_text.strip(), source, time)
+        return tip(tips_text_list[text_id], source, time)
 

@@ -2,11 +2,13 @@
 
 from map import rooms
 from dialogue import *
-from questlog import create_tip_from_file
+from questlog import *
 from player import *
 from items import *
 from gameparser import *
+from savefiletesting import save_file, load_file
 from termcolor import colored
+checkpoint = True
 
 
 def list_of_items(items):
@@ -51,6 +53,8 @@ def print_exit(direction, leads_to):
 
 
 def print_menu(exits, room_items, inv_items):
+    global checkpoint
+    print(colored("This is a checkpoint so you can save now if you wish.", attrs=["bold"]))
     print("You can:")
     # Iterate over available exits
     for direction in exits:
@@ -64,8 +68,18 @@ def print_menu(exits, room_items, inv_items):
     for inv_item in inv_items:
         # Print the available items in the inventory to drop
         print("DROP " + inv_item.id.upper() + " to drop your " + inv_item.name + ".")
+
+    print("VIEW your quest log.")
+
+    if checkpoint:
+        # Allow the user to save their game
+        print("SAVE your game.")
+
+    # Allow the user to load the game
+    print("LOAD a previous save.")
     
     print("What do you want to do?")
+    checkpoint = False
 
 
 def is_valid_exit(exits, chosen_exit):
@@ -153,6 +167,15 @@ def execute_command(command):
         else:
             print("Drop what?")
 
+    elif command[0] == "view":
+        quest_log.print_tips()
+
+    elif command[0] == "save":
+        save_file()
+
+    elif command[0] == "load":
+        load_file()
+
     else:
         print("This makes no sense.")
 
@@ -177,27 +200,33 @@ def move(exits, direction):
     return rooms[exits[direction]]
 
 
-
-
-
 def story():
-    pass
-
-
-
-
-
-
-
-
-
+    speed = 1
+    if item_coffee in inventory:
+        speed *= 1.5
+    if current_weather == "":
+        speed *= 0.7
+    if quest_log.tip[0].text == tips_text_list[1]:
+        print("Welcome to the game")
 
 
 # This is the entry point of our program
 def main():
-    init_dialogue()
-    intro_text = "The aim of the game is to bring all of the available with you items back to the reception"
+    global tips_text_list
+    intro_text = """ 
+ _____  ____   ___   ___ ___      ____  __ __  _____ _____ ____   ____      __    __  ____  ______  __ __      _       ___   __ __    ___ 
+|     ||    \ /   \ |   |   |    |    \|  |  |/ ___// ___/|    | /    |    |  |__|  ||    ||      ||  |  |    | |     /   \ |  |  |  /  _]
+|   __||  D  )     || _   _ |    |  D  )  |  (   \_(   \_  |  | |  o  |    |  |  |  | |  | |      ||  |  |    | |    |     ||  |  | /  [_ 
+|  |_  |    /|  O  ||  \_/  |    |    /|  |  |\__  |\__  | |  | |     |    |  |  |  | |  | |_|  |_||  _  |    | |___ |  O  ||  |  ||    _]
+|   _] |    \|     ||   |   |    |    \|  :  |/  \ |/  \ | |  | |  _  |    |  `  '  | |  |   |  |  |  |  |    |     ||     ||  :  ||   [_ 
+|  |   |  .  \     ||   |   |    |  .  \     |\    |\    | |  | |  |  |     \      /  |  |   |  |  |  |  |    |     ||     | \   / |     |
+|__|   |__|\_|\___/ |___|___|    |__|\_|\__,_| \___| \___||____||__|__|      \_/\_/  |____|  |__|  |__|__|    |_____| \___/   \_/  |_____|
+                                                                                                                                                                                                                                                                                 
+    """
     print(colored(intro_text, "red", attrs=["bold"]))
+    init_dialogue()
+    start_tip = create_tip_from_file(1, "Your subconscious", current_time)
+    quest_log.add_tip(start_tip)
 
     # Main game loop
 
@@ -205,6 +234,7 @@ def main():
         # Display game status (room description, inventory etc.)
         print_room(current_room)
         print_inventory_items(inventory)
+        story()
 
         # Show the menu with possible actions and ask the player
         command = menu(current_room["exits"], current_room["items"], inventory)

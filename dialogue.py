@@ -1,11 +1,13 @@
 
 # Declaring the dialogue lists
 jing_list = []
+test_list = []
 
-npc_name_list = ["", "Jing Wu"]
+npc_name_list = ["", "Jing Wu", "Test"]
 npc_dict = {
     # Needs to be in the same order as in dialogue.txt and npc_name_list, starting at 1
-    1: jing_list
+    1: jing_list,
+    2: test_list
 }
 
 

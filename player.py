@@ -6,7 +6,7 @@ name = ["Kirill", "Sidorov"]
 
 inventory = [item_badge]
 
-current_weather = ""
+
 
 # Start game at the reception
 current_room = rooms["Office"]

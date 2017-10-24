@@ -86,7 +86,7 @@ room_warehouse_upper = {
     "items": []
 }
 
-room_bills_house = {
+room_wai_house = {
     "name": "",
 
     "description": "",
@@ -96,7 +96,7 @@ room_bills_house = {
     "items": []
 }
 
-room_bills_house_secret = {
+room_wai_house_secret = {
     "name": "",
 
     "description": "",
@@ -116,6 +116,6 @@ rooms = {
     "Alleyway": room_dark_alley,
     "Warehouse": room_warehouse_lower,
     "Warehouse Upper": room_warehouse_upper,
-    "Bill's House": room_bills_house,
-    "Bill's Secret Room": room_bills_house_secret
+    "Wai's House": room_wai_house,
+    "Wai's Secret Room": room_wai_house_secret
 }

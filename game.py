@@ -3,7 +3,7 @@
 from map import rooms
 from dialogue import *
 from questlog import *
-from player import *
+from players import *
 from items import *
 from gameparser import *
 from savefiletesting import save_file, load_file
@@ -112,16 +112,16 @@ def execute_go(direction):
 def execute_take(item_id):
     item = ""
     global current_room
-    global inventory
+    global player
 
     for current_item in current_room["items"]:
         if current_item.id == item_id:
             item = current_item
 
     if item:
-        if not inv_too_heavy(inventory + [item],3):
+        if not inv_too_heavy(player["inventory"] + [item],3):
             current_room["items"].remove(item)
-            inventory += [item]
+            player["inventory"] += [item]
         else:
             print("You cannot take that. It is too much for you to carry.")
     else:
@@ -131,14 +131,14 @@ def execute_take(item_id):
 def execute_drop(item_id):
     item = ""
     global current_room
-    global inventory
+    global player
 
-    for current_items in inventory:
+    for current_items in player["inventory"]:
         if current_items.id == item_id:
             item = current_items
 
     if item:
-        inventory.remove(item)
+        player["inventory"].remove(item)
         current_room["items"] += [item]
     else:
         print("You cannot drop that.")
@@ -202,7 +202,7 @@ def move(exits, direction):
 
 def story():
     speed = 1
-    if item_coffee in inventory:
+    if item_coffee in player["inventory"]:
         speed *= 1.5
     if current_weather == "":
         speed *= 0.7
@@ -233,11 +233,11 @@ def main():
     while True:
         # Display game status (room description, inventory etc.)
         print_room(current_room)
-        print_inventory_items(inventory)
+        print_inventory_items(player["inventory"])
         story()
 
         # Show the menu with possible actions and ask the player
-        command = menu(current_room["exits"], current_room["items"], inventory)
+        command = menu(current_room["exits"], current_room["items"], player["inventory"])
 
         # Execute the player's command
         execute_command(command)

@@ -3,31 +3,32 @@ from map import rooms
 from questlog import *
 
 player = {
-    "name": ["Kirill" , "Sidorov"],
+    "name": ["Kirill", "Sidorov"],
 
-    "inventory" : ["gun"],
+    "inventory": [item_gun],
 
-    "description" :
+    "description":
     """Do we want a description?""",
 
     "health": 250,
-    "ammo" : 3, 
+    "ammo": 3,
 }
 
 bodyguard = {
     "name": ["Frank" , "Guard"],
 
-    "inventory" : ["gun"],
+    "inventory": ["gun"],
 
-    "description" :
+    "description":
     """Do we want a description?""",
 
     "health": 250,
-    "ammo" : 3, 
+    "ammo": 3,
 }
 
 
 # Start game at the reception
+current_weather = ""
 current_room = rooms["Reception"]
 
 current_time = basic_time(13, 49)

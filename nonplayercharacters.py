@@ -41,9 +41,9 @@ class npc:
 
 
 jing_desc = "The surprisingly enthusiastic receptionist here at the station."
-npc_jing = npc("Jing Wu", [item_pen, item_biscuits], rooms["Reception"], jing_desc)
-bill_desc = "The head honcho."
-npc_bill = npc("Bill Jugwin", [], rooms["Office"], bill_desc)
+npc_jing = npc("Jing Wu", [item_coffee], rooms["Reception"], jing_desc)
+wai_desc = "The head honcho."
+npc_wai = npc("Wai Wu", [item_gun], rooms["Office"], wai_desc)
 
-npcs = [npc_jing, npc_bill]
+npcs = [npc_jing, npc_wai]
 

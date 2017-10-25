@@ -5,14 +5,14 @@ from questlog import *
 player = {
     "name": ["Kirill", "Sidorov"],
     "inventory": [items_dict["badge"], items_dict["wallet"]],
-    "health": 1500,
+    "health": 100,
     "ammo": 3
 }
 
 fighter_bodyguard = {
     "name": ["Frank", "Johnson"],
     "inventory": [items_dict["gun"]],
-    "health": 10,
+    "health": 100,
     "ammo": 3
 }
 

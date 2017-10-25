@@ -7,7 +7,7 @@ import os
 from nonplayercharacters import npcs
 from items import items_dict, room_object
 from gameparser import *
-from savefiletesting import save_file, load_file
+from savefile import save_file, load_file
 from termcolor import colored
 checkpoint = True
 time_entered = basic_time(0, 0)

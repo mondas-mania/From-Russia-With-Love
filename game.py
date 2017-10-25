@@ -13,6 +13,7 @@ checkpoint = True
 time_entered = basic_time(0, 0)
 rug_moved = False
 secret_uncovered = False
+speed = 1
 
 
 def cls():
@@ -158,11 +159,11 @@ It's possible there's a clue here somewhere, but it might take time to find, tim
 You remind yourself to inform Jing of the bad tip when you next see her""")
 
             if current_room == rooms["Warehouse"] and previous_room != rooms["Warehouse Upper"]:
-                current_time.incr_time(0, 25)
+                current_time.incr_time(0, 25 / speed)
             elif current_room != rooms["Warehouse Upper"] and previous_room == rooms["Warehouse"]:
-                current_time.incr_time(0, 25)
+                current_time.incr_time(0, 25 / speed)
             else:
-                current_time.incr_time(0, 10)
+                current_time.incr_time(0, 10 / speed)
 
         else:
             print("You cannot go there.")
@@ -271,16 +272,16 @@ def execute_command(command):
     elif command[0] == "take":
         if len(command) > 1:
             execute_take(command[1])
-            current_time.incr_time(0, 1)
+            current_time.incr_time(0, 1 / speed)
         else:
             print("Take what?")
 
     elif command[0] == "check":
         current_room["checked"] = True
         if current_room == rooms["Warehouse"] or current_room == rooms["Warehouse Upper"]:
-            current_time.incr_time(0, 30)
+            current_time.incr_time(0, 30 / speed)
         else:
-            current_time.incr_time(0, 10)
+            current_time.incr_time(0, 10 / speed)
 
     elif command[0] == "question":
         success = False
@@ -288,14 +289,14 @@ def execute_command(command):
             if characters.id == command[1]:
                 success = True
                 execute_question(characters)
-                current_time.incr_time(0, 10)
+                current_time.incr_time(0, 10 / speed)
         if not success:
             print("Question who?")
 
     elif command[0] == "profile":
         if len(command) > 1:
             execute_profile(command[1])
-            current_time.incr_time(0, 2)
+            current_time.incr_time(0, 2 / speed)
         else:
             print("Question who?")
 
@@ -314,7 +315,7 @@ def execute_command(command):
     elif command[0] == "interact":
         if len(command) > 1:
             execute_interact(command[1])
-            current_time.incr_time(0, 2)
+            current_time.incr_time(0, 2 / speed)
         else:
             print("Interact with what?")
 
@@ -381,17 +382,16 @@ def story():
     global time_entered
     global rug_moved
     global secret_uncovered
+    global speed
 
-    speed = 1
     if items_dict["coffee"] in player["inventory"]:
         speed *= 1.5
-    if current_weather == "":
-        speed *= 0.7
 
     if len(quest_log.tip) > 0:
         if quest_log.tip[0].text == tips_text_list[1]:
-            print("Welcome to the game")
+            print("Welcome to the game. You should CHECK the room around you and find your notepad.")
             quest_log.remove_tip_by_text(tips_text_list[1])
+            quest_log.add_tip(create_tip_from_file(9, npcs[0], current_time))
             print("""You sit at your desk in the 5th precinct of the Chicago PD waiting for the next crime to come over your desk,
 and by chance it does, in the form of information coming in concerning "Wai Wu" the primary distributor for
 the deadly drug Python, they're leaving town tonight and you have to catch them by 8 p.m. later today.

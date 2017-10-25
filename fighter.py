@@ -11,14 +11,16 @@ def hitpoints(a, b):
 
 
 def attacking(fighter, player_weapon, fighter_weapon):
-    dmg_multiplier = {"fists": 1, "gun": 5, "shank": 3}
+    dmg_multiplier = {"fists": 1, "gun": 5, "shank": 3, "block": 0.6}
     player_dmg_multiplier = dmg_multiplier[player_weapon]
     fighter_dmg_multiplier = dmg_multiplier[fighter_weapon]
+    if player_weapon == "block":
+        fighter_dmg_multiplier *= 0.4
 
     fighter_hit = hitpoints(3, 9) * fighter_dmg_multiplier
     sleep(0.5)
     player_hit = hitpoints(3, 9) * player_dmg_multiplier
-    if fighter_hit >= (7 * fighter_dmg_multiplier) and player_weapon != "fists":
+    if fighter_hit >= (7 * fighter_dmg_multiplier) and player_weapon != "fists" and player_weapon != "block":
         print("Your weapon got knocked out of your hand onto the floor!")
         player["inventory"].remove(items_dict[player_weapon])
         current_room["items"].append(items_dict[player_weapon])
@@ -37,11 +39,12 @@ def choose_weapon(fighter):
         if items.id in weapons:
             print(items.id.upper() + ",")
     print("FISTS")
+    print("You can also BLOCK an attack taking less damage and slightly injure the bodyguard")
     choose = None
     while not choose:
         print("Which weapon would you like to use?")
         input_text = input("> ").lower().strip()
-        if input_text in weapons or input_text == "fists":
+        if input_text in weapons or input_text == "fists" or input_text == "block":
             choose = input_text
     if items_dict["gun"] in fighter["inventory"] and fighter["ammo"] > 0:
         fighter_weapon = "gun"

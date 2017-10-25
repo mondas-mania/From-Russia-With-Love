@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 
-from map import rooms
 from dialogue import *
-from questlog import *
 from players import *
 from fighter import fight_main
 import os
 from nonplayercharacters import npcs
-from items import items_dict, room_object, item
+from items import items_dict, room_object
 from gameparser import *
 from savefiletesting import save_file, load_file
 from termcolor import colored

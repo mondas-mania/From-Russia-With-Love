@@ -1,13 +1,20 @@
-
 # Declaring the dialogue lists
 jing_list = []
-test_list = []
+street1_list = []
+street2_list = []
+street3_list = []
+thug_list = []
+hooker_list = []
 
-npc_name_list = ["", "Jing Wu", "Test"]
+npc_id_list = ["", "jing", "hoody", "smoker", "walkman", "thug", "hooker"]
 npc_dict = {
     # Needs to be in the same order as in dialogue.txt and npc_name_list, starting at 1
     1: jing_list,
-    2: test_list
+    2: street1_list,
+    3: street2_list,
+    4: street3_list,
+    5: thug_list,
+    6: hooker_list
 }
 
 
@@ -28,6 +35,6 @@ def init_dialogue():
 def print_dialogue(npc, dialogue_id):
     # Can be left alone
     for keys in npc_dict:
-        if npc_name_list[keys] == npc.full_name():
+        if npc_id_list[keys] == npc.id:
             text = npc_dict[keys][dialogue_id]
             npc.print_dialogue(text)

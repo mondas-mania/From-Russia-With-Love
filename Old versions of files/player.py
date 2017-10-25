@@ -6,10 +6,8 @@ name = ["Kirill", "Sidorov"]
 
 inventory = [item_badge]
 
-
-
 # Start game at the reception
 current_room = rooms["Office"]
 
-current_time = basic_time(13, 49)
+current_time = basic_time(14, 00)
 quest_log = log()

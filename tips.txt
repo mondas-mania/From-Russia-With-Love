@@ -1,2 +1,13 @@
 #Insert a new tip on a new line below this comment, no need for speech marks. Anything after a ~ symbol will not be read by the program so you can write any notes about the tip after a ~
 You should go to your desk to pick up your assignment. ~ Tip to start off, this has a tip ID of 1 bc python lists start at index 0
+You should head to the abandoned factory because of claimed reports of activity related to Python in the area
+Isn't Jing meant to be on reception all day?
+The alley outside Wai's establishment sounds like it has a decent amount of crime going on, maybe time to sort it out while on the hunt for Wai?
+The alley outside Wai's establishment certainly doesn't sound inviting.
+The alley outside Wai's establishment seems to be a good place to get something stolen.
+Wai seems to be a recluse, only actually meeting very few people.
+Wai seems to be a mystery to most, even if they treat 'staff' well.
+
+
+Wai was Jing all along? How could this be?
+Too late. Of course you were too late... Where could you have saved time?

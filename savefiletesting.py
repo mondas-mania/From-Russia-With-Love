@@ -1,4 +1,4 @@
-from player import *
+from players import *
 from map import rooms
 from questlog import *
 from termcolor import colored
@@ -33,7 +33,7 @@ def get_file_name(message):
 
 
 def save_file():
-    global inventory
+    global player
     global current_room
     global current_time
     global quest_log
@@ -45,8 +45,8 @@ def save_file():
         return
 
     save = open("Save-Files/" + savename + ".txt", "w")
-    save.write(str(len(inventory)) + "\n")
-    for items in inventory:
+    save.write(str(len(player["inventory"])) + "\n")
+    for items in player["inventory"]:
         save.write(items.id + "\n")
 
     save.write(current_room["name"] + "\n")
@@ -60,7 +60,7 @@ def save_file():
 
 
 def load_file():
-    global inventory
+    global player
     global current_room
     global current_time
 
@@ -91,7 +91,7 @@ def load_file():
     for new_items in inv_list:
         new_inventory.append(items_dict[new_items])
 
-    inventory = new_inventory
+    player["inventory"] = new_inventory
 
     room_name = savelines[line_pos]
     print("Room = " + room_name)
@@ -133,7 +133,7 @@ def load_file():
 # The below lines can be uncommented to test the functionality of the game
 # save_file()
 # load_file()
-# print(str(inventory))
+# print(str(player["inventory"]))
 # quest_log.print_tips()
 
 

@@ -1,4 +1,13 @@
 ## Jing's dialogue
 [Insert dialogue for Jing]
-##[Insert more characters here in this format]
-[Insert more dialogue for the respective characters in this format]
+## Street 1
+“Yeah I’ve heard about plenty of criminal activity happening in the dark alley up the street.”
+## Street 2
+“I don't really know much about the area but the alley over there doesn’t look particularly inviting.”
+## Street 3
+“I’ve been mugged multiple times in that alley north of here.”
+## Thug
+“No one knows much about Wai but I do know they're very secretive and, between you and me, I believe only very few people have ever met them.”
+## Hooker
+“Let's say, sweetie, that I know someone who worked in the club a couple times, they treated them well but Wai has always been mysterious.”
+

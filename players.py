@@ -1,41 +1,35 @@
-from items import *
+from items import items_dict
 from map import rooms
 from questlog import *
 
 player = {
     "name": ["Kirill", "Sidorov"],
-
-    "inventory": [item_gun],
-
-    "description":
-    """Do we want a description?""",
-
-    "health": 250,
-    "ammo": 3,
+    "inventory": [items_dict["badge"], items_dict["wallet"]],
+    "health": 1500,
+    "ammo": 3
 }
 
-bodyguard = {
-    "name": ["Frank" , "Guard"],
+fighter_bodyguard = {
+    "name": ["Frank", "Johnson"],
+    "inventory": [items_dict["gun"]],
+    "health": 10,
+    "ammo": 3
+}
 
-    "inventory": ["gun"],
-
-    "description":
-    """Do we want a description?""",
-
+fighter_wai = {
+    "name": ["Jing", "Wu"],
+    "inventory": [items_dict["gun"]],
     "health": 250,
-    "ammo": 3,
+    "ammo": 3
 }
 
 
 # Start game at the reception
 current_weather = ""
-current_room = rooms["Reception"]
+current_room = rooms["Station"]
 
-current_time = basic_time(13, 49)
+current_time = basic_time(14, 00)
 quest_log = log()
-
-start_tip = create_tip_from_file(1, "Your subconscious", current_time)
-quest_log.add_tip(start_tip)
 
 
 

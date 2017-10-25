@@ -4,7 +4,7 @@ from questlog import *
 
 player = {
     "name": ["Kirill", "Sidorov"],
-    "inventory": [items_dict["badge"], items_dict["wallet"]],
+    "inventory": [items_dict["badge"], items_dict["wallet"], items_dict["gun"]],
     "health": 100,
     "ammo": 3
 }
@@ -19,12 +19,13 @@ fighter_bodyguard = {
 fighter_wai = {
     "name": ["Jing", "Wu"],
     "inventory": [items_dict["gun"]],
-    "health": 250,
+    "health": 100,
     "ammo": 3
 }
 
 
 # Start game at the reception
+secret_uncovered = False
 current_weather = ""
 current_room = rooms["Station"]
 

@@ -39,9 +39,11 @@ def save_file():
     global quest_log
 
     print_save_files()
-    savename = get_file_name("What do you want to name the save? ")
+    savename = get_file_name("What do you want to name the save? Type cancel to cancel the save.")
 
     if not savename:
+        return
+    elif savename == "cancel":
         return
 
     save = open("Save-Files/" + savename + ".txt", "w")
@@ -52,9 +54,18 @@ def save_file():
     save.write(current_room["name"] + "\n")
     save.write(current_time.display_time() + "\n")
 
+    if "down" in rooms["Drug Den"]["exits"]:
+        save.write("True" + "\n")
+    else:
+        save.write("False" + "\n")
+    if secret_uncovered:
+        save.write("True" + "\n")
+    else:
+        save.write("False" + "\n")
+
     save.write(str(len(quest_log.tip)) + "\n")
     for tips in quest_log.tip:
-        save.write(tips.text + " ~ " + tips.source + " ~ " + tips.time.display_time() + "\n")
+        save.write(tips.text + " ~ " + tips.source.id + " ~ " + tips.time.display_time() + "\n")
 
     save.close()
 
@@ -63,6 +74,7 @@ def load_file():
     global player
     global current_room
     global current_time
+    global secret_uncovered
 
     savename = ""
     print_save_files()
@@ -103,7 +115,12 @@ def load_file():
     print("Time = " + savelines[line_pos])
     current_time = get_time_from_str(savelines[line_pos])
 
-    line_pos += 1
+    if savelines[line_pos + 1] == "True":
+        rooms["Drug Den"]["exits"]["down"] = "Den Basement"
+    if savelines[line_pos + 2] == "True":
+        secret_uncovered = True
+
+    line_pos += 3
     tip_count = int(savelines[line_pos])
 
     line_pos += 1

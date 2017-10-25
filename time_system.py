@@ -5,9 +5,9 @@ class basic_time:
 
     def display_time(self):
         if len(str(self.mins)) == 1:
-            time = str(self.hours) + ":0" + str(self.mins)
+            time = str(int(self.hours)) + ":0" + str(int(self.mins))
         else:
-            time = str(self.hours) + ":" + str(self.mins)
+            time = str(int(self.hours)) + ":" + str(int(self.mins))
         return time
 
     def incr_time(self, hrs, mins):
@@ -49,7 +49,10 @@ def diff_times(time1, time2):
     larger = larger_time(time1, time2)
     if not larger:
         return basic_time(0, 0)
-    elif larger == time1:
+    else:
+        larger = get_time_from_str(larger.display_time())
+
+    if larger.display_time() == time1.display_time():
         smaller = time2
     else:
         smaller = time1

@@ -44,7 +44,7 @@ item_blueprints = item("blueprints", "blueprints to the club", blueprints_inspec
 
 burnt_inspect = """There are only tiny patches where the font is legible despite the burning - 
 you can make out a 'J', a 'n' and a 'Wu'. Maybe it was a message sent to Wai Wu, or information about them"""
-item_burnt = item("burnt paper", "pieces of burnt paper", burnt_inspect, 0.001)
+item_burnt = item("paper", "pieces of burnt paper", burnt_inspect, 0.001)
 
 
 # Objects can be added in a similar way, and are unmovable things in rooms that add a bit of variety to each room
@@ -58,7 +58,7 @@ obj_clock = room_object("clock", "wall-mounted clock", clock_interact, clock_ins
 
 coffee_machine_interact = "You already got a cup earlier, surely you can't want another already?"
 coffee_machine_inspect = "It looks like it's been well used."
-obj_coffee_machine = room_object("coffee machine", "coffee machine", coffee_machine_interact, coffee_machine_inspect)
+obj_coffee_machine = room_object("brew", "coffee pot", coffee_machine_interact, coffee_machine_inspect)
 
 desk_interact = "You find old paperwork that you've been too busy to file away."
 desk_inspect = "A messy desk with whatever you need for your normal day."

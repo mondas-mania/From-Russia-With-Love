@@ -13,7 +13,7 @@ could be this much wrong in this region alone as to cause this amount of buzz.
 
     "exits": {"down": "Reception"},
 
-    "items": [items_dict["gun"], items_dict["notepad"], items_dict["clock"], items_dict["desk"], items_dict["coffee machine"]],
+    "items": [items_dict["gun"], items_dict["notepad"], items_dict["clock"], items_dict["desk"], items_dict["brew"]],
 
     "been": True,
 
@@ -100,7 +100,7 @@ The large desk in the center displays a large blueprint, seemingly of Wai Wu's P
 
     "exits": {"up": "Drug Den"},
 
-    "items": [items_dict["shank"], items_dict["blueprints"], items_dict["burnt paper"]],
+    "items": [items_dict["shank"], items_dict["blueprints"], items_dict["paper"]],
 
     "been": False,
 

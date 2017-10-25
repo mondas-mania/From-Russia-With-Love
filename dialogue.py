@@ -6,7 +6,7 @@ street3_list = []
 thug_list = []
 hooker_list = []
 
-npc_id_list = ["", "jing", "hoody", "smoker", "walkman", "thug", "hooker"]
+npc_id_list = ["", "jing", "hoody", "smoker", "rusher", "thug", "hooker"]
 npc_dict = {
     # Needs to be in the same order as in dialogue.txt and npc_name_list, starting at 1
     1: jing_list,

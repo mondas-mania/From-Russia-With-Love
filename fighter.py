@@ -92,4 +92,4 @@ def fight_main(fighter):
     return win
 
 
-# fight_main(fighter_bodyguard)
+fight_main(fighter_bodyguard)

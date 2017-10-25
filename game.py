@@ -12,7 +12,6 @@ from termcolor import colored
 checkpoint = True
 time_entered = basic_time(0, 0)
 rug_moved = False
-secret_uncovered = False
 speed = 1
 
 
@@ -52,6 +51,7 @@ def print_room(room):
 
     if current_room == rooms["Reception"] and rooms["Reception"]["been"]:
         print(colored("Officer Jing must've clocked out of reception already.", attrs=["bold"]))
+        npcs[0].room = rooms["Wai's Secret Room"]
         quest_log.add_tip(create_tip_from_file(3, "Your subconscious", current_time))
     if not current_room["been"]:
         current_room["been"] = True
@@ -179,7 +179,7 @@ def execute_take(item_id):
             item = current_item
 
     if item:
-        if not inv_too_heavy(player["inventory"] + [item],3) and item_id != "rug":
+        if not inv_too_heavy(player["inventory"] + [item], 3) and item_id != "rug":
             current_room["items"].remove(item)
             player["inventory"] += [item]
         else:
@@ -221,10 +221,7 @@ def execute_interact(objects):
     if not interact_object:
         print("You cannot interact with that.")
     else:
-        if interact_object.id == "rug" and rug_moved:
-            print("You pull away the rug and see an unlocked trap door!")
-        else:
-            interact_object.call_interact()
+        interact_object.call_interact()
 
 
 def execute_profile(character_id):
@@ -350,8 +347,10 @@ def move(exits, direction):
 
 
 def move_rug():
+    global checkpoint
     print("You pull away the rug and see an unlocked trap door!")
     rooms["Drug Den"]["exits"]["down"] = "Den Basement"
+    checkpoint = True
 
 
 def secret_room():
@@ -400,10 +399,11 @@ It's currently 2 p.m. and the pressure is on,
 You look around the room and see numerous messy desks and a coffee machine
     """)
 
-    if current_room == rooms["Drug Den"] and not rug_moved:
-        time_entered = current_time
+    if current_room == rooms["Drug Den"] and not rug_moved and not rooms["Drug Den"]["been"]:
+        time_entered = get_time_from_str(current_time.display_time())
 
-    if time_entered.hours != 0 and (diff_times(current_time, time_entered).mins >= 10 or diff_times(current_time, time_entered).hours >= 1):
+    if time_entered.hours != 0 and (diff_times(current_time, time_entered).mins >= 10 or diff_times(current_time, time_entered).hours >= 1) and not rug_moved and current_room == rooms["Drug Den"]:
+        print("You swear the rug has been moved since last time.")
         rug_moved = True
         items_dict["rug"].interact = move_rug
 
@@ -429,6 +429,8 @@ You look around the room and see numerous messy desks and a coffee machine
 knowing that Wai will escape and ruin more lives""")
                     return False
                 else:
+                    print("You can save here if you wish:")
+                    save_file()
                     rooms["Wai's House"]["exits"]["down"] = "Wai's Secret Room"
                     print("You make sure to have a gun on you before you head down to the secret chamber.")
                     if not items_dict["gun"] in player["inventory"]:
@@ -489,8 +491,6 @@ def main():
     init_dialogue()
     start_tip = create_tip_from_file(1, "Your subconscious", current_time)
     quest_log.add_tip(start_tip)
-    global secret_uncovered
-    secret_uncovered = True
     living = True
     story()
     # Main game loop

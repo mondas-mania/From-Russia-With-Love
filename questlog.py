@@ -52,7 +52,7 @@ class tip:
         self.time = time
 
     def print_tip(self):
-        print(colored(self.time.display_time(), "red", attrs=["bold"]) + " - from " + self.source + " - " + self.text)
+        print(colored(self.time.display_time(), "red", attrs=["bold"]) + " - from " + self.source.id.capitalize() + " - " + self.text)
 
 
 def create_tip_from_file(text_id, source, time):

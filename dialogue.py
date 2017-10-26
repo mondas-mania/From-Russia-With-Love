@@ -20,7 +20,7 @@ npc_dict = {
 
 def init_dialogue():
     # Can be left alone
-    dialogue = open("dialogue.txt", "r")
+    dialogue = open("dialogue.txt", "r", encoding="utf8")
     dialogue_all = dialogue.readlines()
     dialogue.close()
     character = 0

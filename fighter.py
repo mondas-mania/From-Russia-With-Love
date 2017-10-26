@@ -90,6 +90,3 @@ def fight_main(fighter):
         win = True
 
     return win
-
-
-fight_main(fighter_bodyguard)

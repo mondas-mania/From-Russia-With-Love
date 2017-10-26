@@ -4,7 +4,7 @@ class basic_time:
         self.mins = mins
 
     def display_time(self):
-        if len(str(self.mins)) == 1:
+        if len(str(int(self.mins))) == 1:
             time = str(int(self.hours)) + ":0" + str(int(self.mins))
         else:
             time = str(int(self.hours)) + ":" + str(int(self.mins))

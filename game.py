@@ -9,6 +9,8 @@ from items import items_dict, room_object
 from gameparser import *
 from savefile import save_file, load_file
 from termcolor import colored
+from colorama import init
+init()
 checkpoint = True
 time_entered = basic_time(0, 0)
 rug_moved = False

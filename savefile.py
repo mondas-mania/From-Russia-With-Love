@@ -46,7 +46,7 @@ def save_file():
     elif savename == "cancel":
         return
 
-    save = open("Save-Files/" + savename + ".txt", "w")
+    save = open("Save-Files/" + savename + ".txt", "w", encoding="utf8")
     save.write(str(len(player["inventory"])) + "\n")
     for items in player["inventory"]:
         save.write(items.id + "\n")
@@ -87,7 +87,7 @@ def load_file():
         if (savename + ".txt") not in os.listdir("Save-Files/"):
             print(colored("Sorry that save doesn't exist", "red"))
 
-    save = open("Save-Files/" + savename + ".txt", "r")
+    save = open("Save-Files/" + savename + ".txt", "r", encoding="utf8")
 
     savelines = save.readlines()
     save.close()

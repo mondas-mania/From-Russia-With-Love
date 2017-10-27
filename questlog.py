@@ -3,7 +3,7 @@ from termcolor import colored
 
 
 def init_tips():
-    tips = open("tips.txt", "r")
+    tips = open("tips.txt", "r", encoding="utf8")
     tips_list = tips.readlines()
     tips.close()
     new_list = []
